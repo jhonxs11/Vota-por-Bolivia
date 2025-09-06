@@ -7,23 +7,36 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       background: #f3f4f6;
+    }
+    section {
+      display: none;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    section.active {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-    .container {
-      text-align: center;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
     h1 {
-      color: #111;
       margin-bottom: 1rem;
+    }
+    p { margin-bottom: 2rem; font-size: 1.2rem; }
+    img { max-width: 120px; margin: 1rem; border-radius: 12px; }
+    .button {
+      background: #ffcc00;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #000;
+      cursor: pointer;
     }
     .btn {
       display: block;
@@ -31,23 +44,41 @@
       padding: 1rem;
       font-size: 1.2rem;
       font-weight: bold;
-      border: none;
       border-radius: 12px;
-      cursor: pointer;
-      text-decoration: none;
       color: #fff;
+      text-decoration: none;
     }
     .tiktok { background: #000; }
-    .instagram { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4); }
+    .instagram { background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); }
     .youtube { background: #ff0000; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <!-- Landing page -->
+  <section id="landing" class="active">
+    <h1>🇧🇴 VOTA POR BOLIVIA AHORA 🇧🇴</h1>
+    <p>Hoy más que nunca</p>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Bolivia.svg" alt="Bandera Bolivia">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Salte%C3%B1as.jpg" alt="Salteña">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Bolivia.svg" alt="Bandera Bolivia">
+    </div>
+    <button class="button" onclick="showVote()">👉 Votar Ahora</button>
+  </section>
+
+  <!-- Voting page -->
+  <section id="vote">
     <h1>🇧🇴 VOTA POR BOLIVIA 🇧🇴</h1>
     <a href="https://www.tiktok.com/@ibaillanos/video/7546278073600150806" class="btn tiktok" target="_blank">Vota en TikTok</a>
     <a href="https://www.instagram.com/reel/DOMBAn5jLMA/" class="btn instagram" target="_blank">Vota en Instagram</a>
     <a href="https://www.youtube.com/shorts/QS4Fl5m510Y" class="btn youtube" target="_blank">Vota en YouTube</a>
-  </div>
+  </section>
+
+  <script>
+    function showVote() {
+      document.getElementById("landing").classList.remove("active");
+      document.getElementById("vote").classList.add("active");
+    }
+  </script>
 </body>
 </html>
