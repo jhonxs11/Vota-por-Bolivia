@@ -1,43 +1,58 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Vota por Bolivia</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background: #f7f7f7;
-        padding: 50px;
-      }
-      h1 {
-        color: #007B00;
-      }
-      button {
-        background-color: #007B00;
-        color: white;
-        padding: 15px 25px;
-        border: none;
-        border-radius: 8px;
-        font-size: 18px;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #009900;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>🇧🇴 VOTA POR BOLIVIA 🇧🇴</h1>
-    <p>Presiona el botón para abrir en tu navegador</p>
-    
-    <button onclick="openInBrowser()">🌐 Open Browser</button>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vota por Bolivia 🇧🇴</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f7f7f7;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #007a33;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    button {
+      background-color: #007a33;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #009944;
+    }
+  </style>
+</head>
+<body>
+  <h1>🇧🇴 VOTA POR BOLIVIA AHORA 🇧🇴</h1>
+  <p>Hoy más que nunca tu voto cuenta 🙌</p>
 
-    <script>
-      function openInBrowser() {
-        // Forces to open a new tab, system will offer browser choice if possible
-        window.open("https://www.instagram.com/reel/DOMBAn5jLMA/", "_blank");
-      }
-    </script>
-  </body>
+  <button onclick="openInstagram()">📲 Votar en Instagram</button>
+
+  <script>
+    function openInstagram() {
+      const appLink = "instagram://reel/DOMBAn5jLMA";
+      const webLink = "https://www.instagram.com/reel/DOMBAn5jLMA/";
+
+      // Try to open Instagram app
+      window.location.href = appLink;
+
+      // Fallback after 800ms → web version (prevents Play Store redirect)
+      setTimeout(() => {
+        window.location.href = webLink;
+      }, 800);
+    }
+  </script>
+</body>
 </html>
