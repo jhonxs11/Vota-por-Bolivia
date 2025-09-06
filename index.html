@@ -3,81 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vota por Bolivia</title>
+  <title>Vota por Bolivia 🇧🇴</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f3f4f6;
-    }
-    section {
-      display: none;
-      min-height: 100vh;
-      text-align: center;
-      padding: 2rem;
-    }
-    section.active {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #007849, #FFD700, #D52B1E);
+      background-size: 600% 600%;
+      animation: gradientMove 10s ease infinite;
+      text-align: center;
+      color: white;
+    }
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 20px;
     }
     h1 {
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
     }
-    p { margin-bottom: 2rem; font-size: 1.2rem; }
-    img { max-width: 120px; margin: 1rem; border-radius: 12px; }
-    .button {
-      background: #ffcc00;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 12px;
-      text-decoration: none;
-      color: #000;
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      background: #3897f0;
+      color: white;
       cursor: pointer;
+      transition: transform 0.2s;
     }
-    .btn {
-      display: block;
-      margin: 1rem 0;
-      padding: 1rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 12px;
-      color: #fff;
-      text-decoration: none;
+    button:hover {
+      transform: scale(1.1);
+      background: #1c65a9;
     }
-    .tiktok { background: #000; }
-    .instagram { background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); }
-    .youtube { background: #ff0000; }
   </style>
 </head>
 <body>
-  <!-- Landing page -->
-  <section id="landing" class="active">
-    <h1>🇧🇴 VOTA POR BOLIVIA AHORA 🇧🇴</h1>
-    <p>Hoy más que nunca</p>
-    <div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Bolivia.svg" alt="Bandera Bolivia">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Salte%C3%B1as.jpg" alt="Salteña">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Bolivia.svg" alt="Bandera Bolivia">
-    </div>
-    <button class="button" onclick="showVote()">👉 Votar Ahora</button>
-  </section>
-
-  <!-- Voting page -->
-  <section id="vote">
-    <h1>🇧🇴 VOTA POR BOLIVIA 🇧🇴</h1>
-    <a href="https://www.tiktok.com/@ibaillanos/video/7546278073600150806" class="btn tiktok" target="_blank">Vota en TikTok</a>
-    <a href="https://www.instagram.com/reel/DOMBAn5jLMA/" class="btn instagram" target="_blank">Vota en Instagram</a>
-    <a href="https://www.youtube.com/shorts/QS4Fl5m510Y" class="btn youtube" target="_blank">Vota en YouTube</a>
-  </section>
+  <div class="container">
+    <h1>🇧🇴 ¡VOTA POR BOLIVIA! 🇧🇴</h1>
+    <p>Haz clic en el botón para apoyar a Bolivia en Instagram 💪</p>
+    <button onclick="openInstagram()">👉 Votar Ahora 👈</button>
+  </div>
 
   <script>
-    function showVote() {
-      document.getElementById("landing").classList.remove("active");
-      document.getElementById("vote").classList.add("active");
+    function openInstagram() {
+      // Intentar abrir la app de Instagram
+      window.location = "instagram://reel/DOMBAn5jLMA";
+
+      // Si no funciona en 2 segundos, abre la versión web
+      setTimeout(function() {
+        window.location = "https://www.instagram.com/reel/DOMBAn5jLMA/";
+      }, 2000);
     }
   </script>
 </body>
