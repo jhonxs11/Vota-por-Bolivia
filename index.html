@@ -2,67 +2,70 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vota por Bolivia 🇧🇴</title>
+  <title>Vota por Bolivia</title>
   <style>
     body {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
-      margin: 0;
+      background: #f5f5f5;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #007849, #FFD700, #D52B1E);
-      background-size: 600% 600%;
-      animation: gradientMove 10s ease infinite;
       text-align: center;
-      color: white;
-    }
-    @keyframes gradientMove {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-    .container {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 30px;
-      border-radius: 20px;
     }
     h1 {
-      margin-bottom: 20px;
+      color: #0c3;
+      font-size: 28px;
     }
     button {
-      padding: 15px 30px;
-      font-size: 20px;
+      margin: 15px;
+      padding: 15px 25px;
+      font-size: 18px;
+      font-weight: bold;
       border: none;
       border-radius: 10px;
-      background: #3897f0;
-      color: white;
       cursor: pointer;
-      transition: transform 0.2s;
+      color: white;
     }
-    button:hover {
-      transform: scale(1.1);
-      background: #1c65a9;
-    }
+    .instagram { background-color: #E1306C; }
+    .youtube { background-color: #FF0000; }
+    .telegram { background-color: #0088cc; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🇧🇴 ¡VOTA POR BOLIVIA! 🇧🇴</h1>
-    <p>Haz clic en el botón para apoyar a Bolivia en Instagram 💪</p>
-    <button onclick="openInstagram()">👉 Votar Ahora 👈</button>
-  </div>
+  <h1>🇧🇴 Vota por Bolivia ahora 🇧🇴</h1>
+  <p>Hoy más que nunca necesitamos tu apoyo</p>
+
+  <!-- Botón Instagram -->
+  <button class="instagram" onclick="openInstagram()">Abrir en Instagram</button>
+
+  <!-- Botón YouTube -->
+  <button class="youtube" onclick="openYouTube()">Abrir en YouTube</button>
+
+  <!-- Botón Telegram -->
+  <button class="telegram" onclick="openTelegram()">Abrir en Telegram</button>
 
   <script>
     function openInstagram() {
-      // Intentar abrir la app de Instagram
-      window.location = "instagram://reel/DOMBAn5jLMA";
+      const appLink = "instagram://reel/DOMBAn5jLMA";
+      const webLink = "https://www.instagram.com/reel/DOMBAn5jLMA/";
+      window.location.href = appLink;
+      setTimeout(() => { window.location.href = webLink; }, 1000);
+    }
 
-      // Si no funciona en 2 segundos, abre la versión web
-      setTimeout(function() {
-        window.location = "https://www.instagram.com/reel/DOMBAn5jLMA/";
-      }, 2000);
+    function openYouTube() {
+      const appLink = "vnd.youtube://watch?v=dQw4w9WgXcQ"; // cambia por tu video
+      const webLink = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      window.location.href = appLink;
+      setTimeout(() => { window.location.href = webLink; }, 1000);
+    }
+
+    function openTelegram() {
+      const appLink = "tg://resolve?domain=BoliviaOficial"; // cambia por tu canal
+      const webLink = "https://t.me/BoliviaOficial";
+      window.location.href = appLink;
+      setTimeout(() => { window.location.href = webLink; }, 1000);
     }
   </script>
 </body>
