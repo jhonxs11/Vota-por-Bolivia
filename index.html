@@ -1,72 +1,43 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Vota por Bolivia</title>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background: #f5f5f5;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    h1 {
-      color: #0c3;
-      font-size: 28px;
-    }
-    button {
-      margin: 15px;
-      padding: 15px 25px;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      color: white;
-    }
-    .instagram { background-color: #E1306C; }
-    .youtube { background-color: #FF0000; }
-    .telegram { background-color: #0088cc; }
-  </style>
-</head>
-<body>
-  <h1>🇧🇴 Vota por Bolivia ahora 🇧🇴</h1>
-  <p>Hoy más que nunca necesitamos tu apoyo</p>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Vota por Bolivia</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #f7f7f7;
+        padding: 50px;
+      }
+      h1 {
+        color: #007B00;
+      }
+      button {
+        background-color: #007B00;
+        color: white;
+        padding: 15px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #009900;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🇧🇴 VOTA POR BOLIVIA 🇧🇴</h1>
+    <p>Presiona el botón para abrir en tu navegador</p>
+    
+    <button onclick="openInBrowser()">🌐 Open Browser</button>
 
-  <!-- Botón Instagram -->
-  <button class="instagram" onclick="openInstagram()">Abrir en Instagram</button>
-
-  <!-- Botón YouTube -->
-  <button class="youtube" onclick="openYouTube()">Abrir en YouTube</button>
-
-  <!-- Botón Telegram -->
-  <button class="telegram" onclick="openTelegram()">Abrir en Telegram</button>
-
-  <script>
-    function openInstagram() {
-      const appLink = "instagram://reel/DOMBAn5jLMA";
-      const webLink = "https://www.instagram.com/reel/DOMBAn5jLMA/";
-      window.location.href = appLink;
-      setTimeout(() => { window.location.href = webLink; }, 1000);
-    }
-
-    function openYouTube() {
-      const appLink = "vnd.youtube://watch?v=dQw4w9WgXcQ"; // cambia por tu video
-      const webLink = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-      window.location.href = appLink;
-      setTimeout(() => { window.location.href = webLink; }, 1000);
-    }
-
-    function openTelegram() {
-      const appLink = "tg://resolve?domain=BoliviaOficial"; // cambia por tu canal
-      const webLink = "https://t.me/BoliviaOficial";
-      window.location.href = appLink;
-      setTimeout(() => { window.location.href = webLink; }, 1000);
-    }
-  </script>
-</body>
+    <script>
+      function openInBrowser() {
+        // Forces to open a new tab, system will offer browser choice if possible
+        window.open("https://www.instagram.com/reel/DOMBAn5jLMA/", "_blank");
+      }
+    </script>
+  </body>
 </html>
