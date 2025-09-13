@@ -1,468 +1,261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juego de la Salteña</title>
-  <link href="https://fonts.googleapis.com/css?family=Anton|Roboto:700" rel="stylesheet">
-  <style>
-    * {
-      padding: 0;
-      margin: 0;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vota por Perú — LA FINAL</title>
+<meta name="description" content="Vota por Perú - La final. Like/Interact en TikTok, YouTube e Instagram. Comparte por WhatsApp." />
+<style>
+  :root{
+    --bg-0:#05060a;
+    --bg-1:#0b0f15;
+    --card:#12161b;
+    --muted:#98a6b3;
+    --glass: rgba(255,255,255,0.02);
+    --accent:#1fc27a;
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(8,12,18,0.7), transparent), linear-gradient(180deg,#06060a 0%, #0b0f15 100%);
+    color:#eaf1f8;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:28px 16px 60px;
+  }
 
-    body {
-      background-color: #000; /* Black background */
-      height: 100vh;
-      font-family: 'Roboto', sans-serif;
-      overflow: hidden;
-    }
+  .container{
+    width:100%;
+    max-width:760px;
+  }
 
-    /* === TITULO SALTEÑA === */
-    .center {
-      position: absolute;
-      text-align: center;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+  header{
+    text-align:center;
+    margin-bottom:18px;
+  }
+  h1{
+    margin:0;
+    font-size:40px;
+    line-height:1;
+    letter-spacing:0.4px;
+    font-weight:800;
+  }
+  .sub{
+    margin-top:8px;
+    font-weight:700;
+    font-size:28px;
+    color:#ffffff;
+    opacity:0.95;
+  }
+  .flags{font-size:28px;margin-top:10px}
 
-    .center h1 {
-      color: rgba(255, 0, 0, 0.1);
-      font-size: clamp(5rem, 12vw, 8rem); /* Increased font size */
-      text-transform: uppercase;
-      font-weight: 700;
-      background-size: cover;
-      background-image: url(https://cdn-images-1.medium.com/max/2000/1*Jalb56N34pBIGCjQULtW3A.jpeg);
-      -webkit-background-clip: text;
-      animation: background-text-animation 25s linear infinite; /* Slower animation */
-    }
+  .updated{
+    margin-top:20px;
+    color:var(--muted);
+    font-size:16px;
+  }
 
-    @keyframes background-text-animation {
-      0% {
-        background-position: left 0px top 50%;
-      }
-      50% {
-        background-position: left 1500px top 50%;
-      }
-      100% {
-        background-position: left 0px top 50%;
-      }
-    }
+  .panel{
+    margin-top:22px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:26px;
+    padding:20px;
+    box-shadow: 0 12px 30px rgba(2,6,23,0.6);
+    border:1px solid rgba(255,255,255,0.03);
+  }
 
-    /* === TEXTO FLIP === */
-    #container {
-      color: #fff;
-      text-transform: uppercase;
-      font-size: clamp(1.5rem, 6vw, 3rem);
-      font-weight: bold;
-      position: fixed;
-      width: 100%;
-      top: 170px;
-      display: block;
-      text-align: center;
-      z-index: 25;
-    }
+  .link-card{
+    background: rgba(255,255,255,0.02);
+    border-radius:14px;
+    padding:16px;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    border:1px solid rgba(255,255,255,0.02);
+  }
 
-    #flip {
-      height: 50px;
-      overflow: hidden;
-      display: inline-block;
-    }
+  .left{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
 
-    #flip > div > div {
-      color: #fff;
-      padding: 4px 12px;
-      height: 45px;
-      margin-bottom: 45px;
-      display: inline-block;
-      background: none;
-      font-size: 1.6rem;
-    }
+  .title{
+    font-size:20px;
+    font-weight:800;
+  }
 
-    #flip div:first-child {
-      animation: show 6s linear infinite;
-    }
+  .title.tiktok{ color:#79e6db; } /* teal/purple-ish like the screenshot */
+  .title.youtube{ color:#ff3b3b; }
+  .title.instagram{ color:#ff7aa5; }
 
-    @keyframes show {
-      0% {
-        margin-top: -270px;
-      }
-      5% {
-        margin-top: -180px;
-      }
-      33% {
-        margin-top: -180px;
-      }
-      38% {
-        margin-top: -90px;
-      }
-      66% {
-        margin-top: -90px;
-      }
-      71% {
-        margin-top: 0;
-      }
-      99.99% {
-        margin-top: 0;
-      }
-      100% {
-        margin-top: -270px;
-      }
-    }
+  .meta{
+    font-size:14px;
+    color:var(--muted);
+    display:flex;
+    gap:8px;
+    align-items:center;
+  }
 
-    /* === BOTONES === */
-    .center-links {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 20;
-      align-items: center;
-    }
+  .meta .visited{
+    color:#1fc27a;
+    font-weight:700;
+  }
 
-    .link-btn {
-      width: 180px;
-      height: 60px;
-      border: 4px solid white;
-      border-radius: 14px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      transition: transform 0.2s;
-      color: white;
-      font-size: 1.6rem;
-      font-weight: bold;
-    }
+  .badge{
+    min-width:48px;
+    min-height:48px;
+    border-radius:999px;
+    background:rgba(0,0,0,0.35);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    border:1px solid rgba(255,255,255,0.04);
+  }
 
-    .link-btn:hover {
-      transform: scale(1.1);
-    }
+  .whatsapp-card{
+    background: rgba(0,0,0,0.45);
+    border-radius:14px;
+    padding:14px;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    border:1px solid rgba(255,255,255,0.02);
+  }
 
-    .instagram {
-      background: linear-gradient(45deg, #feda75, #d62976, #962fbf, #4f5bd5);
-    }
+  .whatsapp-title{
+    font-size:20px;
+    color:#18c24b;
+    font-weight:900;
+  }
 
-    .youtube {
-      background: #ff0000;
-    }
+  .share-desc{ color:var(--muted); font-size:14px; margin-top:6px }
 
-    .tiktok {
-      background: black;
-    }
+  .actions a, .actions button{
+    appearance:none;
+    -webkit-appearance:none;
+    border:0;
+    background:transparent;
+    color:inherit;
+    text-decoration:none;
+    font-weight:800;
+    padding:10px 14px;
+    border-radius:10px;
+    cursor:pointer;
+  }
 
-    /* === SALTEÑA === */
-    .saltena {
-      position: absolute;
-      top: -160px;
-      width: 70px;
-      height: 130px;
-      background: radial-gradient(circle at 30% 30%, #e8b93c, #c97a1c);
-      clip-path: ellipse(40% 50% at 50% 50%);
-      z-index: 1;
-    }
+  footer{
+    margin-top:26px;
+    text-align:center;
+    font-weight:800;
+    font-size:18px;
+    line-height:1.3;
+    color:#ffffff;
+  }
 
-    .saltena::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 8px;
-      height: 100%;
-      background: repeating-linear-gradient(45deg, #3a1c05 0px, #3a1c05 4px, #8b4a1e 4px, #8b4a1e 8px);
-      transform: translateX(-50%);
-      clip-path: ellipse(60% 100% at 50% 50%);
-    }
-
-    /* === SALTEÑA BANDERA === */
-    .flag {
-      width: 60px;
-      height: 35px;
-      border-radius: 6px;
-      background: linear-gradient(to bottom, red 20%, yellow 20% 70%, green 70%);
-      animation: rise 1s forwards;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    @keyframes rise {
-      from {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-
-      to {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-80px);
-      }
-    }
-
-    /* === BOTELLA === */
-    .bottle {
-      width: 30px;
-      height: 70px;
-      border-radius: 6px;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .bottle-part {
-      flex: 1;
-      width: 100%;
-    }
-
-    .part1 {
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    .part2,
-    .part5,
-    .part6 {
-      background: #2c0d0d;
-    }
-
-    .part3,
-    .part4 {
-      background: red;
-    }
-
-    .bottle-neck {
-      position: absolute;
-      width: 18px;
-      height: 12px;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 3px;
-      top: -12px;
-      left: 6px;
-    }
-
-    .bottle-cap {
-      position: absolute;
-      width: 20px;
-      height: 8px;
-      background: red;
-      border-radius: 2px;
-      top: -20px;
-      left: 5px;
-    }
-
-    /* === PACMAN === */
-    #pacman {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      width: 60px;
-      height: 60px;
-      background: #ffeb3b;
-      border-radius: 50%;
-      transform: translateX(-50%) rotate(-90deg);
-      overflow: hidden;
-      z-index: 2;
-    }
-
-    #mouth {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #000; /* Black mouth */
-      clip-path: polygon(50% 50%, 100% 0, 100% 100%);
-      transform-origin: 50% 50%;
-      animation: chomp 0.5s infinite;
-    }
-
-    @keyframes chomp {
-      0% {
-        clip-path: polygon(50% 50%, 100% 0, 100% 100%);
-      }
-
-      50% {
-        clip-path: polygon(50% 50%, 100% 48%, 100% 52%);
-      }
-
-      100% {
-        clip-path: polygon(50% 50%, 100% 0, 100% 100%);
-      }
-    }
-
-    #eye {
-      position: absolute;
-      top: 15%;
-      left: 50%;
-      width: 8px;
-      height: 8px;
-      background: black;
-      border-radius: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-    }
-  </style>
+  @media (max-width:520px){
+    h1{font-size:34px}
+    .sub{font-size:22px}
+    .title{font-size:18px}
+  }
+</style>
 </head>
 <body>
+  <div class="container" role="main">
+    <header aria-labelledby="pageTitle">
+      <h1 id="pageTitle">Vota por Perú</h1>
+      <div class="sub">LA FINAL</div>
+      <div class="flags">🇵🇪 &nbsp; vs &nbsp; 🇻🇪</div>
+      <div class="updated">Actualizado 10 de Setiembre</div>
+    </header>
 
-  <!-- TITULO SALTEÑA -->
-  <div class="center">
-    <h1>Salteña</h1>
+    <section class="panel" aria-label="links">
+      <!-- TikTok card -->
+      <div class="link-card" role="article" aria-label="Votar en TikTok">
+        <div class="left">
+          <div class="title tiktok">Votar en TikTok</div>
+          <div class="meta">
+            <span class="visited">✓ Visitado</span>
+            <span>· Like al comentario con Perú</span>
+          </div>
+        </div>
+        <div class="actions">
+          <!-- Replace with real TikTok deep link -->
+          <a class="badge" title="Abrir TikTok" href="https://vm.tiktok.com/REPLACE_TIKTOK_ID" target="_blank" rel="noopener noreferrer">TT</a>
+        </div>
+      </div>
+
+      <!-- YouTube card -->
+      <div class="link-card" role="article" aria-label="Votar en YouTube">
+        <div class="left">
+          <div class="title youtube">Votar en YouTube</div>
+          <div class="meta">
+            <span class="visited">✓ Visitado</span>
+            <span>· Like al comentario fijado</span>
+          </div>
+        </div>
+        <div class="actions">
+          <!-- Replace with real YouTube short or video link -->
+          <a class="badge" title="Abrir YouTube" href="https://youtu.be/REPLACE_VIDEO_ID" target="_blank" rel="noopener noreferrer">YT</a>
+        </div>
+      </div>
+
+      <!-- Instagram card -->
+      <div class="link-card" role="article" aria-label="Votar en Instagram">
+        <div class="left">
+          <div class="title instagram">Votar en Instagram</div>
+          <div class="meta">
+            <span class="visited">✓ Visitado</span>
+            <span>· Historias o comentarios marcados</span>
+          </div>
+        </div>
+        <div class="actions">
+          <!-- Replace with real Instagram reel/post -->
+          <a class="badge" title="Abrir Instagram" href="https://www.instagram.com/reel/REPLACE_REEL_ID/" target="_blank" rel="noopener noreferrer">IG</a>
+        </div>
+      </div>
+
+      <!-- WhatsApp share -->
+      <div style="margin-top:12px;">
+        <div class="whatsapp-card">
+          <div>
+            <div class="whatsapp-title">Compartir WhatsApp</div>
+            <div class="share-desc">Comparte esta página con tus amigos para que también voten</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <button id="waShare" class="badge" aria-label="Compartir por WhatsApp">WA</button>
+            <!-- small visual whatsapp icon as emoji -->
+            <div style="font-size:26px;">🟢</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Hecho con ❤️ para que más personas voten por Perú. Comparte para que más personas voten.
+    </footer>
   </div>
 
-  <!-- TEXTO FLIP -->
-  <div id="container">
-    <div id="flip">
-      <div><div>¡VOTA AHORA!</div></div>
-      <div><div>POR BOLIVIA🇧🇴</div></div>
-      <div></div></div>
-    </div>
-  </div>
-
-  <!-- PACMAN -->
-  <div id="pacman">
-    <div id="eye"></div>
-    <div id="mouth"></div>
-  </div>
-
-  <!-- LINKS -->
-  <div class="center-links">
-    <a href="https://www.instagram.com/reel/DOMBAn5jLMA/?igsh=NjBlc214OXE4cHY2" target="_blank" class="link-btn instagram">Instagram</a>
-    <a href="https://youtube.com/shorts/7iYviaiLAAE?si=1vuTnVQ32iBKzYio" target="_blank" class="link-btn youtube">YouTube</a>
-    <a href="https://vm.tiktok.com/ZMAMTV1Fn/" target="_blank" class="link-btn tiktok">TikTok</a>
-  </div>
-
-  <script>
-    // Here goes your pacman movement logic and item fall handling
-    const pacman = document.getElementById("pacman");
-    let pacX = window.innerWidth / 2;
-    let spawnInterval;
-    let spawnRate = 1500;
-    let fallSpeed = 3;
-    let cokeLevel = 0;
-    let saltenasEaten = 0;
-
-    const pacColors = ["#ffeb3b", "#d4a017", "#5d4037"];
-
-    // animación SALTEÑA
-    const spans = document.querySelectorAll(".word span");
-    setInterval(() => {
-      const idx = Math.floor(Math.random() * spans.length);
-      spans[idx].classList.add("active");
-      setTimeout(() => spans[idx].classList.remove("active"), 2500);
-    }, 1500);
-
-    // Movimiento pacman
-    let touchStartX = null;
-    document.addEventListener("touchstart", e => {
-      const touchX = e.touches[0].clientX;
-      const pacRect = pacman.getBoundingClientRect();
-      if (touchX > pacRect.left - 80 && touchX < pacRect.right + 80) {
-        touchStartX = touchX;
-      }
+<script>
+  // WhatsApp share: opens system share via wa.me with encoded text
+  (function(){
+    const btn = document.getElementById('waShare');
+    btn.addEventListener('click', function(){
+      const text = encodeURIComponent("¡Vota por Perú! Ayuda compartiendo este enlace: " + location.href);
+      const url = "https://wa.me/?text=" + text;
+      window.open(url, '_blank', 'noopener');
     });
-    document.addEventListener("touchmove", e => {
-      const currentX = e.touches[0].clientX;
-      if (touchStartX !== null) {
-        let dx = currentX - touchStartX;
-        pacX += dx;
-        movePacman();
-        touchStartX = currentX;
-      }
-    });
-    document.addEventListener("touchend", () => { touchStartX = null; });
-    document.addEventListener("mousemove", e => { pacX = e.clientX; movePacman(); });
-
-    function movePacman() {
-      if (pacX < 30) pacX = 30;
-      if (pacX > window.innerWidth - 30) pacX = window.innerWidth - 30;
-      pacman.style.left = pacX + "px";
-    }
-
-    // Objetos
-    function createItem() {
-      if (Math.random() < 0.3) {
-        const bottleContainer = document.createElement("div");
-        bottleContainer.style.position = "absolute";
-        bottleContainer.style.left = Math.random() * (window.innerWidth - 40) + "px";
-        bottleContainer.style.top = "-160px";
-        bottleContainer.style.width = "30px";
-        bottleContainer.style.height = "90px";
-
-        const body = document.createElement("div");
-        body.className = "bottle";
-        for (let i = 1; i <= 6; i++) {
-          const part = document.createElement("div");
-          part.className = "bottle-part part" + i;
-          body.appendChild(part);
-        }
-        const neck = document.createElement("div");
-        neck.className = "bottle-neck";
-        const cap = document.createElement("div");
-        cap.className = "bottle-cap";
-        bottleContainer.appendChild(body);
-        bottleContainer.appendChild(neck);
-        bottleContainer.appendChild(cap);
-        document.body.appendChild(bottleContainer);
-        fallItem([bottleContainer], "coke");
-      } else {
-        const item = document.createElement("div");
-        item.className = "saltena";
-        item.style.left = Math.random() * (window.innerWidth - 80) + "px";
-        document.body.appendChild(item);
-        fallItem([item], "saltena");
-      }
-    }
-
-    function fallItem(parts, type) {
-      let y = -160;
-      function fall() {
-        if (document.hidden) { parts.forEach(p => p.remove()); return; }
-        y += fallSpeed;
-        parts.forEach(p => p.style.top = y + "px");
-        const pacRect = pacman.getBoundingClientRect();
-        const rect = parts[0].getBoundingClientRect();
-        if (rect.bottom >= pacRect.top && rect.left < pacRect.right && rect.right > pacRect.left) {
-          parts.forEach(p => p.remove());
-          if (type === "coke") {
-            cokeLevel = Math.min(cokeLevel + 1, pacColors.length - 1);
-            pacman.style.background = pacColors[cokeLevel];
-          } else {
-            saltenasEaten++;
-            const flag = document.createElement("div");
-            flag.className = "flag";
-            flag.style.left = rect.left + "px";
-            flag.style.top = rect.top + "px";
-            document.body.appendChild(flag);
-            setTimeout(() => flag.remove(), 1000);
-
-            // Pacman vuelve amarillo
-            cokeLevel = 0;
-            pacman.style.background = pacColors[0];
-
-            // Aumentar velocidad tras 10 salteñas
-            if (saltenasEaten % 10 === 0) {
-              fallSpeed += 1;
-            }
-          }
-          return;
-        }
-        if (y < window.innerHeight) requestAnimationFrame(fall); else parts.forEach(p => p.remove());
-      }
-      fall();
-    }
-
-    function startSpawning() {
-      if (!spawnInterval) spawnInterval = setInterval(createItem, spawnRate);
-    }
-
-    function stopSpawning() { clearInterval(spawnInterval); spawnInterval = null; }
-
-    document.addEventListener("visibilitychange", () => { if (document.hidden) stopSpawning(); else startSpawning(); });
-    startSpawning();
-  </script>
+  })();
+</script>
 </body>
 </html>
